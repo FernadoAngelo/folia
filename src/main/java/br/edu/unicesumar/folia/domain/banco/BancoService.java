@@ -4,6 +4,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
 
 
@@ -24,19 +25,22 @@ public class BancoService {
     }
 
     public Banco atualizaBanco(UUID uuid, Banco bancoAtualizado) {
-        Banco usuarioExistente = bancoRepository.findById(uuid).orElseThrow(EntityNotFoundException::new);
+        Banco bancoExistente = bancoRepository.findById(uuid).orElseThrow(EntityNotFoundException::new);
         bancoAtualizado.setAgencia((bancoAtualizado.getAgencia()));
         bancoAtualizado.setConta((bancoAtualizado.getAgencia()));
         bancoAtualizado.setAgenciaDigito((bancoAtualizado.getAgencia()));
         bancoAtualizado.setContaDigito((bancoAtualizado.getAgencia()));
-        bancoAtualizado.setDigitoVerificadorAgenciaConta((bancoAtualizado.getAgencia()));
-        bancoAtualizado.setAgenciaDigito((bancoAtualizado.getAgencia()));
+        bancoAtualizado.setDigitoVerificador((bancoAtualizado.getAgencia()));
 
-        return bancoRepository.save(bancoAtualizado);
+        return bancoRepository.save(bancoExistente);
     }
 
     public Banco encontrarPorIdBanco(UUID uuid) {
         return bancoRepository.findById(uuid).orElseThrow(EntityNotFoundException::new);
+    }
+
+    public List<Banco> encontrarTodos() {
+        return bancoRepository.findAll();
     }
 
 }

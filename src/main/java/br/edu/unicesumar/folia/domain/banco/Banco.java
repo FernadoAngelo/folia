@@ -26,6 +26,6 @@ public class Banco extends Entidade {
     @Column
     private int contaDigito;
     @Column
-    private int digitoVerificadorAgenciaConta;
+    private int digitoVerificador;
 
 }

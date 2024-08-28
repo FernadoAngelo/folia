@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -41,8 +42,14 @@ public class BancoRestController {
     }
 
     @GetMapping("/{uuid}")
-    public ResponseEntity<Banco> visualizar(@PathVariable UUID uuid){
+    public ResponseEntity<Banco> visualizarPorId(@PathVariable UUID uuid){
         Banco response = bancoService.encontrarPorIdBanco(uuid);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("")
+    public ResponseEntity<List<Banco>> visualizar(){
+        List<Banco> response = bancoService.encontrarTodos();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
