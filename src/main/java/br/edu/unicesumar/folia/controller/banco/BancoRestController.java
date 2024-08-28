@@ -1,9 +1,7 @@
-package br.edu.unicesumar.folia.controller.boleto;
+package br.edu.unicesumar.folia.controller.banco;
 
 import br.edu.unicesumar.folia.domain.banco.Banco;
 import br.edu.unicesumar.folia.domain.banco.BancoService;
-import br.edu.unicesumar.folia.domain.usuario.Usuario;
-import br.edu.unicesumar.folia.domain.usuario.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,13 +11,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("boleto")
-public class BoletoRestController {
+@RequestMapping("banco")
+public class BancoRestController {
 
 
     private final BancoService bancoService;
 
-    public BoletoRestController(BancoService bancoService) {
+    public BancoRestController(BancoService bancoService) {
         this.bancoService = bancoService;
     }
 
